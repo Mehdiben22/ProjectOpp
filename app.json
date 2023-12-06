@@ -1,0 +1,16 @@
+{
+  "expo": {
+    "name": "ProjectOpp",
+    "slug": "ProjectOpp",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "503c80da-cee2-4832-ac73-8a2b4d7d40d1"
+      }
+    }
+  },
+  "name": "ProjectOpp"
+}
