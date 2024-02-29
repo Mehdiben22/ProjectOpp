@@ -4,6 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer} from '@react-navigation/native'
 import {createNativeStackNavigator} from '@react-navigation/native-stack'
 import Loginscreen from './screens/Loginscreen';
+// import Loginscreen from './screens/Loginscreen2';
 import Homescreen from './screens/Homescreen'
 import Opportunitee from './screens/Opportunites/Opportunitee';
 import OpportuniteList from './screens/Opportunites/OpportuniteList';
@@ -22,6 +23,9 @@ import DetailsOpp from './screens/Opportunites/DetailsOpp';
 const Stack = createNativeStackNavigator() ;
 export default function App() {
   const [oppId,setOppId]=useState()
+
+
+  
 
   return (
     <NavigationContainer>

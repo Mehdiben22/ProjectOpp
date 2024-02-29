@@ -7,6 +7,7 @@ import { URL_API } from '../common/Constant';
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useNavigation } from '@react-navigation/native';
 
+import axios from 'axios';
 
 const Loginscreen = () => {
   const [login, setLogin] = useState("");
@@ -19,41 +20,25 @@ const Loginscreen = () => {
     setShowPassword(!showPassword);
   };
 
-  const handleLogin =  ()=>{
-   const obj ={
-    login :login,
-    password:aesEncrypt(password)
-   }
-   console.log(obj.password)
-    fetch(URL_API+'/login', {
-        method: 'POST',
-        body: JSON.stringify(obj) ,
+  const handleLogin = ()=>{
+      const obj={
+        login :login,
+        password:aesEncrypt(password)
+       }
+       axios.post(URL_API+'/login',JSON.stringify(obj), {
         headers: {
-          'Accept': 'application/json',
           'Content-Type': 'application/json'
         }
       })
-  // .then((response) => response.json() 
-         
- //)
-  .then(response => {
-    if(response.ok){
-      AsyncStorage.setItem('token', response.headers.get("authorization") )
-      console.log('response', response)
-      console.log('response.status', response.status)
-      console.log('response.headers ==> ', response.headers);
-      console.log('response.headers.authorization ==> ', response.headers.authorization);
-      console.log('response.headers.authorization ==> ', response.headers.authorization);
-      console.log('response.headers.Authorization get ==> ', response.headers.get("authorization"));
-      navigation.navigate('Home');
-    }
-    else{
-      alert("Login failed; " + response.status + ' | ' + response.statusText);
-    }
-  })
-  .catch((error) => {
-    console.error("Error:", error);
-  });
+      .then((response) => {
+        console.log("RESULAT.DATA ",response);
+        console.log("RESULAT.DATA .headers.authorization",response.headers.authorization);
+        AsyncStorage.setItem('token',response.headers.authorization)      
+        navigation.navigate('Home');
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
       
   }
   return (

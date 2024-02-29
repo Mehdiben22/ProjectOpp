@@ -26,10 +26,6 @@ public class MainApplication extends Application implements ReactApplication {
       public boolean getUseDeveloperSupport() {
         return BuildConfig.DEBUG;
       }
-      @Override    
-public boolean canOverrideExistingModule() {        
-  return true;    
-}  
 
       @Override
       protected List<ReactPackage> getPackages() {
